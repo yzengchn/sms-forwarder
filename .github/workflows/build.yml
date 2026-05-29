@@ -37,7 +37,6 @@ jobs:
         run: ./gradlew assembleRelease
 
       - name: Sign APK
-        if: ${{ secrets.SIGNING_KEY_BASE64 != '' }}
         uses: r0adkll/sign-android-release@v1
         id: sign_apk
         with:
@@ -48,6 +47,7 @@ jobs:
           keyPassword: ${{ secrets.KEY_PASSWORD }}
         env:
           BUILD_TOOLS_VERSION: "34.0.0"
+          SIGNING_KEY_BASE64: ${{ secrets.SIGNING_KEY_BASE64 }}
 
       - name: Upload Release APK (signed)
         if: ${{ steps.sign_apk.outcome == 'success' }}
