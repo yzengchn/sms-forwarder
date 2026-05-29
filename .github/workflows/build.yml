@@ -47,17 +47,16 @@ jobs:
           keyPassword: ${{ secrets.KEY_PASSWORD }}
         env:
           BUILD_TOOLS_VERSION: "34.0.0"
-          SIGNING_KEY_BASE64: ${{ secrets.SIGNING_KEY_BASE64 }}
 
       - name: Upload Release APK (signed)
-        if: ${{ steps.sign_apk.outcome == 'success' }}
+        if: steps.sign_apk.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
           name: release-apk-signed
-          path: ${{ steps.sign_apk.outputs.signedReleaseFile }}
+          path: app/build/outputs/apk/release/*-signed.apk
 
       - name: Upload Release APK (unsigned)
-        if: ${{ steps.sign_apk.outcome != 'success' }}
+        if: steps.sign_apk.outcome != 'success'
         uses: actions/upload-artifact@v4
         with:
           name: release-apk-unsigned
@@ -67,7 +66,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v') && steps.sign_apk.outcome == 'success'
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ steps.sign_apk.outputs.signedReleaseFile }}
+          files: app/build/outputs/apk/release/*-signed.apk
           generate_release_notes: true
 
       - name: Publish unsigned to GitHub Release
