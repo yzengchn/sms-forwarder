@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- sw480dp: tablet / large phone landscape -->
+    <dimen name="page_padding_horizontal">28dp</dimen>
+    <dimen name="page_padding_top">28dp</dimen>
+    <dimen name="page_padding_bottom">28dp</dimen>
+
+    <dimen name="card_padding">24dp</dimen>
+    <dimen name="card_margin_top">20dp</dimen>
+
+    <dimen name="space_large">24dp</dimen>
+    <dimen name="space_xlarge">36dp</dimen>
+
+    <dimen name="nav_height">60dp</dimen>
+    <dimen name="nav_padding">10dp</dimen>
+    <dimen name="nav_icon_size">26dp</dimen>
+    <dimen name="scroll_padding_bottom">168dp</dimen>
+
+    <dimen name="bubble_max_width">400dp</dimen>
+    <dimen name="bubble_padding_h">20dp</dimen>
+    <dimen name="bubble_padding_v">14dp</dimen>
+
+    <dimen name="button_min_height">52dp</dimen>
+
+    <dimen name="chip_padding_h">14dp</dimen>
+    <dimen name="chip_padding_v">8dp</dimen>
+</resources>

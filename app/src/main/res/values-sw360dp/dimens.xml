@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- sw360dp: standard phone (e.g. 6" 1080p) -->
+    <dimen name="page_padding_horizontal">20dp</dimen>
+    <dimen name="page_padding_top">24dp</dimen>
+    <dimen name="page_padding_bottom">24dp</dimen>
+
+    <dimen name="card_padding">18dp</dimen>
+    <dimen name="card_margin_top">16dp</dimen>
+
+    <dimen name="space_large">20dp</dimen>
+    <dimen name="space_xlarge">28dp</dimen>
+
+    <dimen name="nav_height">56dp</dimen>
+    <dimen name="nav_padding">8dp</dimen>
+    <dimen name="nav_icon_size">22dp</dimen>
+    <dimen name="scroll_padding_bottom">148dp</dimen>
+
+    <dimen name="bubble_max_width">320dp</dimen>
+    <dimen name="bubble_padding_h">16dp</dimen>
+    <dimen name="bubble_padding_v">12dp</dimen>
+
+    <dimen name="button_min_height">48dp</dimen>
+
+    <dimen name="chip_padding_h">12dp</dimen>
+    <dimen name="chip_padding_v">6dp</dimen>
+</resources>

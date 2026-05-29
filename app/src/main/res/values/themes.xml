@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ═══ App Theme ═══ -->
+    <style name="Theme.SmsForwarder" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorPrimaryVariant">@color/brand_primary_dark</item>
+        <item name="colorSecondary">@color/brand_accent</item>
+        <item name="colorSurface">@color/surface_card</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@android:color/transparent</item>
+        <item name="android:windowBackground">@drawable/bg_app_surface</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <!-- ═══ Shape Appearances ═══ -->
+    <style name="ShapeAppearance.SmsForwarder.Card" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">28dp</item>
+    </style>
+
+    <style name="ShapeAppearance.SmsForwarder.Input" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <!-- ═══ Card Styles ═══ -->
+    <style name="Widget.SmsForwarder.GlassCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/surface_card</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/border_soft</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.SmsForwarder.Card</item>
+    </style>
+
+    <style name="Widget.SmsForwarder.HeroCard" parent="Widget.SmsForwarder.GlassCard">
+        <item name="cardBackgroundColor">@color/surface_card_highlight</item>
+        <item name="strokeColor">@color/border_soft_strong</item>
+    </style>
+
+    <!-- ═══ Button Styles ═══ -->
+    <style name="Widget.SmsForwarder.PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="backgroundTint">@color/brand_primary</item>
+        <item name="cornerRadius">22dp</item>
+        <item name="elevation">0dp</item>
+        <item name="android:minHeight">@dimen/button_min_height</item>
+        <item name="rippleColor">@color/chip_blue_fill</item>
+    </style>
+
+    <style name="Widget.SmsForwarder.SecondaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="backgroundTint">@color/button_secondary_fill</item>
+        <item name="strokeColor">@color/border_soft</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cornerRadius">22dp</item>
+        <item name="elevation">0dp</item>
+        <item name="android:minHeight">@dimen/button_min_height</item>
+        <item name="rippleColor">@color/chip_blue_fill</item>
+    </style>
+
+    <!-- ═══ Input Style ═══ -->
+    <style name="Widget.SmsForwarder.InputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundMode">filled</item>
+        <item name="boxBackgroundColor">@color/input_fill</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.SmsForwarder.Input</item>
+        <item name="boxStrokeColor">@color/brand_primary</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="hintTextColor">@color/text_tertiary</item>
+        <item name="android:textColorHint">@color/text_tertiary</item>
+        <item name="colorSurface">@color/surface_card</item>
+    </style>
+
+    <!-- ═══ Text Styles — dot hierarchy requires intermediate parents ═══ -->
+
+    <!-- Intermediate parent so AAPT resolves Text.SmsForwarder.* -->
+    <style name="Text.SmsForwarder" parent="" />
+
+    <style name="Text.SmsForwarder.PageTitle">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/brand_primary_dark</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Text.SmsForwarder.PageSubtitle">
+        <item name="android:layout_marginTop">@dimen/space_medium</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Text.SmsForwarder.Headline">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.SmsForwarder.Body">
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Text.SmsForwarder.CardTitle">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.SmsForwarder.CardSubtitle">
+        <item name="android:layout_marginTop">@dimen/space_tiny</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text.SmsForwarder.StatNumber">
+        <item name="android:layout_marginTop">@dimen/space_small</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.SmsForwarder.ChipBlue">
+        <item name="android:background">@drawable/bg_chip_blue</item>
+        <item name="android:paddingStart">@dimen/chip_padding_h</item>
+        <item name="android:paddingTop">@dimen/chip_padding_v</item>
+        <item name="android:paddingEnd">@dimen/chip_padding_h</item>
+        <item name="android:paddingBottom">@dimen/chip_padding_v</item>
+        <item name="android:textColor">@color/brand_primary</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.SmsForwarder.ChipGreen">
+        <item name="android:background">@drawable/bg_chip_green</item>
+        <item name="android:paddingStart">@dimen/chip_padding_h</item>
+        <item name="android:paddingTop">@dimen/chip_padding_v</item>
+        <item name="android:paddingEnd">@dimen/chip_padding_h</item>
+        <item name="android:paddingBottom">@dimen/chip_padding_v</item>
+        <item name="android:textColor">@color/success_green</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.SmsForwarder.NavLabel">
+        <item name="android:layout_marginTop">@dimen/space_tiny</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Intermediate parent so AAPT resolves Row.SmsForwarder.* -->
+    <style name="Row.SmsForwarder" parent="" />
+
+    <style name="Row.SmsForwarder.ButtonPair">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/card_margin_top</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+</resources>

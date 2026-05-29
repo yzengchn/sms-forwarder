@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ═══ Page padding (default: compact for ≤sw360dp) ═══ -->
+    <dimen name="page_padding_horizontal">16dp</dimen>
+    <dimen name="page_padding_top">20dp</dimen>
+    <dimen name="page_padding_bottom">20dp</dimen>
+
+    <!-- ═══ Card ═══ -->
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_margin_top">14dp</dimen>
+
+    <!-- ═══ Spacing ═══ -->
+    <dimen name="space_tiny">4dp</dimen>
+    <dimen name="space_small">8dp</dimen>
+    <dimen name="space_medium">12dp</dimen>
+    <dimen name="space_large">18dp</dimen>
+    <dimen name="space_xlarge">24dp</dimen>
+
+    <!-- ═══ Bottom nav ═══ -->
+    <dimen name="nav_height">52dp</dimen>
+    <dimen name="nav_padding">6dp</dimen>
+    <dimen name="nav_icon_size">20dp</dimen>
+    <dimen name="scroll_padding_bottom">128dp</dimen>
+
+    <!-- ═══ Feedback bubble ═══ -->
+    <dimen name="bubble_max_width">280dp</dimen>
+    <dimen name="bubble_padding_h">14dp</dimen>
+    <dimen name="bubble_padding_v">10dp</dimen>
+
+    <!-- ═══ Button ═══ -->
+    <dimen name="button_min_height">44dp</dimen>
+
+    <!-- ═══ Chip padding ═══ -->
+    <dimen name="chip_padding_h">10dp</dimen>
+    <dimen name="chip_padding_v">5dp</dimen>
+</resources>

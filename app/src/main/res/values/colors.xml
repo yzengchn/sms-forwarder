@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand -->
+    <color name="brand_primary">#007AFF</color>
+    <color name="brand_primary_dark">#111827</color>
+    <color name="brand_accent">#5AC8FA</color>
+
+    <!-- Surfaces -->
+    <color name="surface_card">#FAFCFF</color>
+    <color name="surface_card_highlight">#FFFFFF</color>
+
+    <!-- Text hierarchy -->
+    <color name="text_primary">#111827</color>
+    <color name="text_secondary">#66758C</color>
+    <color name="text_tertiary">#8A96A8</color>
+
+    <!-- Screen gradient -->
+    <color name="screen_top">#F7F9FD</color>
+    <color name="screen_bottom">#EDF2FA</color>
+
+    <!-- Borders -->
+    <color name="border_soft">#D8E0EC</color>
+    <color name="border_soft_strong">#C8D4E7</color>
+
+    <!-- Fills -->
+    <color name="button_secondary_fill">#EEF3FB</color>
+    <color name="input_fill">#F3F6FB</color>
+    <color name="chip_blue_fill">#E8F1FF</color>
+    <color name="chip_green_fill">#EAF8F0</color>
+
+    <!-- Navigation -->
+    <color name="nav_shell_fill">#F8FBFF</color>
+    <color name="nav_tab_selected_fill">#E8F1FF</color>
+    <color name="nav_unselected">#7B8798</color>
+
+    <!-- Feedback toast -->
+    <color name="feedback_fill">#FBFDFF</color>
+    <color name="feedback_text">#122033</color>
+
+    <!-- Semantic -->
+    <color name="success_green">#34C759</color>
+    <color name="warning_orange">#FF9F0A</color>
+    <color name="danger_red">#FF453A</color>
+</resources>
