@@ -5,6 +5,7 @@ import java.util.Date
 import java.util.Properties
 import javax.mail.Authenticator
 import javax.mail.Message
+import javax.mail.NoSuchProviderException
 import javax.mail.PasswordAuthentication
 import javax.mail.Session
 import javax.mail.Transport
@@ -92,7 +93,14 @@ class EmailDispatcher {
             Transport.send(message)
             DispatchResult(success = true, message = "OK")
         }.getOrElse { error ->
-            DispatchResult(success = false, message = error.message ?: error.javaClass.simpleName)
+            DispatchResult(success = false, message = formatSendError(error))
+        }
+    }
+
+    private fun formatSendError(error: Throwable): String {
+        return when (error) {
+            is NoSuchProviderException -> "SMTP provider 加载失败：${error.message ?: error.javaClass.simpleName}"
+            else -> error.message ?: error.javaClass.simpleName
         }
     }
 
