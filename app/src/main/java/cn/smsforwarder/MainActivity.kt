@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() {
                 val detail = intent.getStringExtra(ForwarderService.EXTRA_TEST_MESSAGE).orEmpty()
                 showMessage("$message\n$detail")
             }
-            renderRuntimeState()
             repository.invalidateCache()
             renderRuntimeState()
         }
@@ -86,8 +85,6 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         suppressUiCallbacks = false
-        repository.invalidateCache()
-        renderRuntimeState()
     }
 
     override fun onStop() {

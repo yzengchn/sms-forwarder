@@ -9,6 +9,7 @@ class AppRepository private constructor(context: Context) {
     private val prefs = appContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
     private var serviceEnabledCache: Boolean? = null
     private var channelConfigsCache: List<ChannelConfig>? = null
+    private var enabledChannelsCache: List<ChannelConfig>? = null
     private var statsCache: Stats? = null
     private var recentFailuresCache: List<FailureRecord>? = null
     private var recentForwardLogsCache: List<ForwardLogRecord>? = null
@@ -28,6 +29,7 @@ class AppRepository private constructor(context: Context) {
     fun invalidateCache() {
         serviceEnabledCache = null
         channelConfigsCache = null
+        enabledChannelsCache = null
         statsCache = null
         recentFailuresCache = null
         recentForwardLogsCache = null
@@ -43,7 +45,7 @@ class AppRepository private constructor(context: Context) {
 
     @Synchronized
     fun setServiceEnabled(enabled: Boolean) {
-        if (serviceEnabledCache == enabled) {
+        if (isServiceEnabled() == enabled) {
             return
         }
         serviceEnabledCache = enabled
@@ -90,8 +92,13 @@ class AppRepository private constructor(context: Context) {
 
     @Synchronized
     fun saveChannelConfig(config: ChannelConfig) {
-        val merged = getChannelConfigs().associateBy { it.type }.toMutableMap()
-        merged[config.type] = config.normalized()
+        val normalized = config.normalized()
+        val configs = getChannelConfigs()
+        if (configs.firstOrNull { it.type == normalized.type } == normalized) {
+            return
+        }
+        val merged = configs.associateBy { it.type }.toMutableMap()
+        merged[normalized.type] = normalized
         persistChannels(
             ChannelType.entries.map { type ->
                 (merged[type] ?: ChannelConfigs.defaultConfig(type)).normalized()
@@ -101,7 +108,9 @@ class AppRepository private constructor(context: Context) {
 
     @Synchronized
     fun getEnabledChannels(): List<ChannelConfig> {
-        return getChannelConfigs().filter { it.enabled && it.isReadyForDispatch() }
+        return enabledChannelsCache ?: getChannelConfigs()
+            .filter { it.enabled && it.isReadyForDispatch() }
+            .also { enabledChannelsCache = it }
     }
 
     @Synchronized
@@ -284,6 +293,7 @@ class AppRepository private constructor(context: Context) {
 
     private fun persistChannels(configs: List<ChannelConfig>) {
         channelConfigsCache = configs
+        enabledChannelsCache = configs.filter { it.enabled && it.isReadyForDispatch() }
         prefs.edit().putString(KEY_CHANNELS_JSON, serializeChannels(configs)).apply()
     }
 

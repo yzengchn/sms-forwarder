@@ -186,6 +186,9 @@ class ForwarderService : Service() {
             .setContentIntent(mainActivityPendingIntent())
             .setOngoing(true)
             .setOnlyAlertOnce(true)
+            .setLocalOnly(true)
+            .setPriority(NotificationCompat.PRIORITY_LOW)
+            .setSilent(true)
             .build()
 
     private fun updateNotification() {
@@ -237,6 +240,9 @@ class ForwarderService : Service() {
             getString(R.string.notification_channel_name),
             NotificationManager.IMPORTANCE_LOW,
         )
+        channel.enableVibration(false)
+        channel.setSound(null, null)
+        channel.setShowBadge(false)
         manager.createNotificationChannel(channel)
     }
 

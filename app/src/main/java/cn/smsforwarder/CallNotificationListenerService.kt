@@ -23,8 +23,8 @@ class CallNotificationListenerService : NotificationListenerService() {
     }
 
     override fun onNotificationPosted(sbn: StatusBarNotification) {
-        if (!repository.isServiceEnabled()) return
         if (!shouldInspectNotification(sbn)) return
+        if (!repository.isServiceEnabled()) return
 
         val payload = extractMissedCallPayload(sbn) ?: return
         val fingerprint = payload.dedupeFingerprint(
