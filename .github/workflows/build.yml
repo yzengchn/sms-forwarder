@@ -37,7 +37,7 @@ jobs:
         run: ./gradlew assembleRelease
 
       - name: Sign APK
-        if: ${{ env.SIGNING_KEY_BASE64 != '' }}
+        if: ${{ secrets.SIGNING_KEY_BASE64 != '' }}
         uses: r0adkll/sign-android-release@v1
         id: sign_apk
         with:
