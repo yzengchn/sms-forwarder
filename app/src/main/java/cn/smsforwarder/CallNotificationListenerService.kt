@@ -6,6 +6,7 @@ import android.service.notification.StatusBarNotification
 
 class CallNotificationListenerService : NotificationListenerService() {
     private lateinit var repository: AppRepository
+    private val activeMissedCallKeys = mutableSetOf<String>()
 
     override fun onCreate() {
         super.onCreate()
@@ -27,12 +28,19 @@ class CallNotificationListenerService : NotificationListenerService() {
         if (!repository.isServiceEnabled()) return
 
         val payload = extractMissedCallPayload(sbn) ?: return
+        val activeKey = buildActiveMissedCallKey(sbn, payload)
+        if (!activeMissedCallKeys.add(activeKey)) return
+
         val fingerprint = payload.dedupeFingerprint(
             source = NOTIFICATION_SOURCE,
-            sourceId = buildNotificationSourceId(sbn),
+            sourceId = activeKey,
         )
         if (!repository.markForwardSeen(fingerprint)) return
         ForwarderService.enqueuePayload(applicationContext, payload)
+    }
+
+    override fun onNotificationRemoved(sbn: StatusBarNotification) {
+        activeMissedCallKeys.removeAll { it.startsWith(buildNotificationSourcePrefix(sbn)) }
     }
 
     /**
@@ -75,7 +83,9 @@ class CallNotificationListenerService : NotificationListenerService() {
             type = ForwardRecordType.MISSED_CALL,
             sender = sender,
             body = "",
-            receivedAt = sbn.postTime.takeIf { it > 0L } ?: System.currentTimeMillis(),
+            receivedAt = notification.`when`.takeIf { it > 0L }
+                ?: sbn.postTime.takeIf { it > 0L }
+                ?: System.currentTimeMillis(),
         ).normalized()
     }
 
@@ -122,7 +132,11 @@ class CallNotificationListenerService : NotificationListenerService() {
             .firstOrNull { it.isNotBlank() }
     }
 
-    private fun buildNotificationSourceId(sbn: StatusBarNotification): String {
+    private fun buildActiveMissedCallKey(sbn: StatusBarNotification, payload: ForwardPayload): String {
+        return buildNotificationSourcePrefix(sbn) + payload.sender
+    }
+
+    private fun buildNotificationSourcePrefix(sbn: StatusBarNotification): String {
         return buildString {
             append(sbn.packageName.orEmpty())
             append('#')
@@ -131,6 +145,7 @@ class CallNotificationListenerService : NotificationListenerService() {
                 append('#')
                 append(sbn.tag)
             }
+            append('#')
         }
     }
 
